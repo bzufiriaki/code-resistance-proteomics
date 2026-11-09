@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 # =============================================================================
-# 01_calculate_resistance.R
+# 01_A_MORE.R
 #
 # Iterative XGBoost framework to quantify resistance to AD neuropathological
 # change (ADNPC).
@@ -21,7 +21,7 @@
 #   ImportancePlot_<category>.svg/.tiff
 #
 # Example (Abeta42 resistance):
-#   Rscript scripts/01_calculate_resistance.R \
+#   Rscript scripts/01_A_MORE.R \
 #     --adnimerge=data/ADNIMERGE_03Dec2024.csv \
 #     --dataset=data/All_residuals_with_median.csv \
 #     --outcome=ABETA_adj --label=ABETA_adj \
