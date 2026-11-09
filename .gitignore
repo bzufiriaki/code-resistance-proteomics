@@ -1,0 +1,30 @@
+# --- Data: ADNI data must NOT be committed (ADNI Data Use Agreement) ---
+data/*
+!data/README.md
+*.csv
+*.tsv
+*.xlsx
+*.rds
+*.RData
+
+# --- Results / generated output ---
+results/*
+!results/.gitkeep
+*.pdf
+*.png
+*.svg
+*.tiff
+
+# --- R / RStudio ---
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
+.Rproj.user/
+*.Rproj
+renv/library/
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
