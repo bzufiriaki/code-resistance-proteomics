@@ -1,9 +1,7 @@
 # Proteomic signatures of resistance to Alzheimer's disease pathology
 
 Code for quantifying individual **resistance** to amyloid and tau pathology
-(ADNPC: Alzheimer's disease neuropathological change), selecting CSF protein
-panels that capture it, and relating those proteins to clinical, imaging,
-fluid-biomarker and cognitive trajectories in ADNI.
+(ADNPC: Alzheimer's disease neuropathological change).
 
 Pereira Connectomics Lab, Karolinska Institutet.
 
