@@ -11,4 +11,4 @@ The expected files and the columns the scripts use are listed below.
 
 | File | Required columns |
 |---|---|
-| Subject-level dataset (e.g. `individuals.csv`) | `RID`, `AGE`, `PTEDUCAT`, `PTGENDER`, `Cognitive_Status` (CN/MCI/AD), 'APOE4' and the outcome (`ABETA`, `PTAU`, …) |
+| Subject-level dataset (e.g. `individuals.csv`) | `RID`, `AGE`, `PTEDUCAT`, `PTGENDER`, `Cognitive_Status` (CN/MCI/AD), `APOE4` and the outcome (`ABETA`, `PTAU`, …) |
