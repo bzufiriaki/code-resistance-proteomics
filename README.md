@@ -17,10 +17,8 @@ Pereira Connectomics Lab, Karolinska Institutet.
 .
 ├── R/
 │   ├── utils.R               # argument parsing, small helpers
-│   ├── xgb_helpers.R         # repeated-CV XGBoost + importance normalisation
-│   └── lmm_helpers.R         # mixed-model grid, p-value correction, heatmaps
 ├── scripts/
-│   ├── 01_calculate_resistance.R
+│   ├── 01_A_MORE.R
 ├── data/                     # ADNI data (not included, see data/README.md)
 ├── results/                  # output (not tracked)
 ├── install_packages.R
