@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 # =============================================================================
-# 01_A_MORE.R
+# 01_a_MoRE.R
 #
 # Iterative framework that quantifies each individual’s resistance 
 # to Aβ and pTau pathology as the gap between observed CSF levels and those 
@@ -24,7 +24,7 @@
 #   ImportancePlot_<category>.svg/.tiff
 #
 # Example (Abeta42 resistance):
-#   Rscript scripts/01_A_MORE.R \
+#   Rscript scripts/01_a_MoRE.R \
 #     --dataset=data/individuals.csv \
 #     --outcome=ABETA --label=ABETA \
 #     --output_dir=results/XGboost_ABETA42

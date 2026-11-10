@@ -7,7 +7,7 @@ Data for this project come from the Alzheimer's Disease Neuroimaging Initiative 
 Each script takes file paths as options, so you can keep the data anywhere.
 The expected files and the columns the scripts use are listed below.
 
-## 01_A_MORE.R
+## 01_a_MoRE.R
 
 | File | Required columns |
 |---|---|

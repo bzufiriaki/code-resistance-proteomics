@@ -9,7 +9,7 @@ Pereira Connectomics Lab, Karolinska Institutet.
 ## Pipeline
 
 ```
- 01_A_MORE.R          ->  per-subject resistance residuals
+ 01_a_MoRE.R          ->  per-subject resistance residuals
 ```
 
 ## Repository structure
@@ -19,7 +19,7 @@ Pereira Connectomics Lab, Karolinska Institutet.
 ├── R/
 │   ├── utils.R               # argument parsing, small helpers
 ├── scripts/
-│   ├── 01_A_MORE.R
+│   ├── 01_a_MoRE.R
 ├── data/                     # data not included, see data/README.md
 ├── results/                  # output (not tracked)
 ├── install_packages.R
