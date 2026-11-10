@@ -25,7 +25,6 @@
 #
 # Example (Abeta42 resistance):
 #   Rscript scripts/01_A_MORE.R \
-#     --adnimerge=data/ADNIMERGE.csv \
 #     --dataset=data/individuals.csv \
 #     --outcome=ABETA_adj --label=ABETA_adj \
 #     --output_dir=results/XGboost_ABETA42
@@ -46,7 +45,6 @@ source(file.path(script_dir, "..", "R", "utils.R"))
 
 # ---- Options -----------------------------------------------------------------
 opts <- parse_args(list(
-  adnimerge  = NULL,                        # ADNIMERGE csv (APOE4, demographics)
   dataset    = NULL,                        # subject-level dataset with outcome + covariates
   outcome    = "ABETA_adj",                 # column to model (e.g. ABETA_adj, PTAU_adj)
   label      = "ABETA_adj",                 # name used for output folder/files
@@ -77,23 +75,12 @@ nrounds               <- 1000
 early_stopping_rounds <- 10
 
 # ---- Load and assemble data --------------------------------------------------
-adnimerge <- read.csv(require_file(opts$adnimerge))
 dataset   <- read.csv(require_file(opts$dataset))
 
 variables_of_interest <- c("RID", "AGE", "PTEDUCAT", "PTGENDER",
-               "ABETA_adj", "AV45", "PTAU_adj",
-               "FDG", "Ventricles_bl", "Hippocampus_bl", "WholeBrain_bl",
-               "Entorhinal_bl", "Fusiform_bl", "MidTemp_bl", "ICV_bl",
-               "MMSE", "ADAS13", "RAVLT_perc_forgetting", "MOCA", "FAQ",
-               "Status")
-variables_of_interest <- union(variables_of_interest, setdiff(c(opts$outcome, predictors), "APOE4"))
+               "ABETA_adj", "PTAU_adj", "Cognitive_Status", "APOE4")
 dataset <- dataset[, intersect(variables_of_interest, colnames(dataset))]
 
-# Add APOE4 and demographic info from ADNIMERGE (merge() also sorts by RID,
-# which determines the fold assignment — keep this order for reproducibility)
-dataset <- merge(dataset, unique(adnimerge[, c("APOE4", "RID")]), by = "RID", all.x = TRUE)
-dataset <- merge(dataset, unique(adnimerge[, c("PTETHCAT", "RID", "PTRACCAT", "DX_bl")]),
-                 by = "RID", all.x = TRUE)
 
 missing_pred <- setdiff(c(predictors, opts$outcome), colnames(dataset))
 if (length(missing_pred) > 0) stop("Columns not found in data: ", paste(missing_pred, collapse = ", "))
@@ -153,14 +140,6 @@ compute_oof_residuals <- function(X_df, y, RID, category_name) {
   }
   write.csv2(to_matrix(resid_iter), file.path(out_dir, paste0("residuals_iter_", category_name, ".csv")),   row.names = FALSE)
   write.csv2(to_matrix(pred_iter),  file.path(out_dir, paste0("predictions_iter_", category_name, ".csv")), row.names = FALSE)
-
-  # Summaries across iterations
-  mean_resid <- colMeans(do.call(rbind, resid_iter))
-  mean_pred  <- colMeans(do.call(rbind, pred_iter))
-  y_sorted   <- y_iter[[1]]
-
-  r2      <- 1 - sum((y_sorted - mean_pred)^2) / sum((y_sorted - mean(y_sorted))^2)
-  ct      <- cor.test(y_sorted - mean_pred, y_sorted)
 
   # Feature importance of the last fitted model (last fold, last iteration)
   importance <- xgb.importance(model = last_model)
