@@ -26,7 +26,7 @@
 # Example (Abeta42 resistance):
 #   Rscript scripts/01_A_MORE.R \
 #     --dataset=data/individuals.csv \
-#     --outcome=ABETA_adj --label=ABETA_adj \
+#     --outcome=ABETA --label=ABETA \
 #     --output_dir=results/XGboost_ABETA42
 # =============================================================================
 
@@ -46,8 +46,8 @@ source(file.path(script_dir, "..", "R", "utils.R"))
 # ---- Options -----------------------------------------------------------------
 opts <- parse_args(list(
   dataset    = NULL,                        # subject-level dataset with outcome + covariates
-  outcome    = "ABETA_adj",                 # column to model (e.g. ABETA_adj, PTAU_adj)
-  label      = "ABETA_adj",                 # name used for output folder/files
+  outcome    = "ABETA",                 # column to model (e.g. ABETA, PTAU)
+  label      = "ABETA",                 # name used for output folder/files
   predictors = "PTEDUCAT,APOE4,PTGENDER,AGE,Status",
   category   = "State",                     # name of the predictor set
   output_dir = "results/XGboost_ABETA42",
@@ -78,7 +78,7 @@ early_stopping_rounds <- 10
 dataset   <- read.csv(require_file(opts$dataset))
 
 variables_of_interest <- c("RID", "AGE", "PTEDUCAT", "PTGENDER",
-               "ABETA_adj", "PTAU_adj", "Cognitive_Status", "APOE4")
+               "ABETA", "PTAU", "Cognitive_Status", "APOE4")
 dataset <- dataset[, intersect(variables_of_interest, colnames(dataset))]
 
 
