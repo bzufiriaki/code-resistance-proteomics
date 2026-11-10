@@ -11,5 +11,4 @@ The expected files and the columns the scripts use are listed below.
 
 | File | Required columns |
 |---|---|
-| `ADNIMERGE_<date>.csv` (ADNI) | `RID`, `APOE4`, `PTETHCAT`, `PTRACCAT`, `DX_bl` |
-| Subject-level dataset (e.g. `individuals.csv`) | `RID`, `AGE`, `PTEDUCAT`, `PTGENDER`, `Status` (CN/MCI/AD) and the outcome (`ABETA_adj`, `PTAU_adj`, …) |
+| Subject-level dataset (e.g. `individuals.csv`) | `RID`, `AGE`, `PTEDUCAT`, `PTGENDER`, `Cognitive_Status` (CN/MCI/AD), 'APOE4' and the outcome (`ABETA`, `PTAU`, …) |
