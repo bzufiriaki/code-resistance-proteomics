@@ -2,14 +2,17 @@
 # =============================================================================
 # 01_A_MORE.R
 #
-# Iterative XGBoost framework to quantify resistance to AD neuropathological
-# change (ADNPC).
+# Iterative framework that quantifies each individual’s resistance 
+# to Aβ and pTau pathology as the gap between observed CSF levels and those 
+# expected from well-established AD risk factors, namely age, sex, education, 
+# APOE ε4 genotype and clinical status
 #
-# Resistance = observed - expected biomarker level, where the expected level
-# is predicted out-of-fold by XGBoost from the "state" covariates
-# (age, sex, education, cognitive status and APOE e4 by
-# default). The 10-fold CV is repeated `n_iter` times (default 1000) with
-# seeds 1..n_iter, so each subject gets one out-of-fold prediction per
+# Resistance = observed pathology - expected pathology
+# 
+# The expected pathology is predicted out-of-fold by XGBoost from the AD risk 
+# factors (age, sex, education, cognitive status and APOE e4 by
+# default). The 10-fold CV is repeated 'n_iter' times (default 1000) with
+# random generated seeds, so each subject gets one out-of-fold prediction per
 # iteration.
 #
 # Outputs (in <output_dir>/<label>/):
@@ -22,8 +25,8 @@
 #
 # Example (Abeta42 resistance):
 #   Rscript scripts/01_A_MORE.R \
-#     --adnimerge=data/ADNIMERGE_03Dec2024.csv \
-#     --dataset=data/All_residuals_with_median.csv \
+#     --adnimerge=data/ADNIMERGE.csv \
+#     --dataset=data/individuals.csv \
 #     --outcome=ABETA_adj --label=ABETA_adj \
 #     --output_dir=results/XGboost_ABETA42
 # =============================================================================

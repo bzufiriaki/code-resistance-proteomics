@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-# utils.R — small helpers shared by all scripts
+# utils.R — small helpers
 # -----------------------------------------------------------------------------
 
 #' Parse command-line arguments of the form --key=value
