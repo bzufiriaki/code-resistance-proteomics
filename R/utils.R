@@ -36,9 +36,6 @@ parse_args <- function(defaults, args = commandArgs(trailingOnly = TRUE)) {
 #' Split a comma-separated string into a character vector
 split_csv <- function(x) trimws(strsplit(x, ",")[[1]])
 
-#' Interpret "1"/"TRUE"/"yes" as TRUE
-as_flag <- function(x) tolower(as.character(x)) %in% c("1", "true", "yes", "y")
-
 #' Create a directory (recursively) if it does not exist and return its path
 ensure_dir <- function(path) {
   if (!dir.exists(path)) {
@@ -54,9 +51,4 @@ require_file <- function(path, hint = NULL) {
     stop("File not found: ", path, if (!is.null(hint)) paste0("\n", hint))
   }
   path
-}
-
-#' Number of parallel workers: "auto" -> all cores minus one
-resolve_workers <- function(x) {
-  if (identical(x, "auto")) max(1L, parallel::detectCores() - 1L) else as.integer(x)
 }
