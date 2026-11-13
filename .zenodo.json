@@ -1,0 +1,18 @@
+
+{
+  "creators": [
+    {
+      "name": "Passaretti, Massimiliano",
+      "orcid": "0000-0002-7932-8695",
+      "affiliation": "Karolinska Institutet"
+    },
+    {
+      "name": "Zufiria-Gerbolés, Blanca",
+      "orcid": "0000-0001-7756-630X",
+      "affiliation": "Karolinska Institutet"
+    },
+  ],
+  "license": "MIT",
+  "title": "My Research Software",
+  "upload_type": "software"
+}
